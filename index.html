@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tony Trieu - Applied AI Engineer</title>
+  <meta name="description" content="Applied AI Engineer at Chinchill.ai. AI agents, enterprise integrations, production systems.">
+  <meta property="og:title" content="Tony Trieu - Applied AI Engineer">
+  <meta property="og:description" content="Building AI that does real work. Agents, integrations, infrastructure.">
+  <meta property="og:url" content="https://tonytrieu.me">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tony Trieu - Applied AI Engineer">
+  <meta name="twitter:description" content="Applied AI Engineer at Chinchill.ai. AI agents, enterprise integrations, production systems.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="portfolio()" class="bg-white text-gray-900 font-sans antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
+    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="font-semibold text-gray-900 text-sm">Tony Trieu</a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm transition-colors"
+           :class="activeSection === 'about' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'">About</a>
+        <a href="#experience" class="text-sm transition-colors"
+           :class="activeSection === 'experience' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'">Experience</a>
+        <a href="#projects" class="text-sm transition-colors"
+           :class="activeSection === 'projects' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'">Projects</a>
+        <a href="#contact" class="text-sm transition-colors"
+           :class="activeSection === 'contact' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'">Contact</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-gray-500 hover:text-gray-900 transition-colors" aria-label="Toggle menu">
+        <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="mobileMenuOpen"
+         x-transition:enter="transition ease-out duration-150"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-100"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         class="md:hidden border-t border-gray-100 bg-white">
+      <div class="max-w-3xl mx-auto px-6 py-4 flex flex-col gap-4">
+        <a href="#about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
+        <a href="#experience" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Experience</a>
+        <a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
+        <a href="#contact" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="hero" class="hero-grid hero-spotlight relative overflow-hidden pt-48 pb-32 px-6">
+      <div class="max-w-3xl mx-auto text-center hero-content relative z-10">
+        <p class="text-xs font-mono uppercase tracking-widest text-gray-400">Applied AI Engineer</p>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-gray-900 mt-4">Tony Trieu</h1>
+        <p class="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto mt-6">
+          I started at Chinchill.ai as an intern and became a full-time engineer one week later.
+          I build AI agents that plug into the tools enterprise IT teams already use, with
+          approval workflows so nothing happens without the right sign-off, and I keep
+          them running in production.
+        </p>
+        <p class="text-xs font-mono text-gray-400 mt-4">
+          UC Riverside &nbsp;&middot;&nbsp; Computer Engineering &nbsp;&middot;&nbsp; Dean's Honor List &nbsp;&middot;&nbsp; Dec 2025
+        </p>
+        <div class="flex items-center justify-center gap-4 mt-10">
+          <a href="#projects" class="bg-black text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors">
+            See My Work
+          </a>
+          <a href="#contact" class="border border-gray-300 text-gray-700 text-sm px-5 py-2.5 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 px-6">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">About</p>
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-10">Who I Am</h2>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Bio -->
+          <div class="space-y-4 text-gray-600 leading-relaxed">
+            <p>The thing I keep coming back to is building AI that actually does something.</p>
+            <p>
+              Not demos. Agents that connect to the real systems companies run, that people
+              trust to take action, and that are still working at 2am when no one's watching.
+            </p>
+            <p>
+              I started at Chinchill.ai as an intern, shipped to production on my first day,
+              and was offered a full-time role one week in. Before that I built ScheduleBud
+              from the ground up. It's still running.
+            </p>
+          </div>
+
+          <!-- Capabilities -->
+          <div>
+            <dl>
+              <div class="capability-row" style="border-top: none; padding-top: 0;">
+                <dt class="text-xs font-mono text-gray-400 uppercase tracking-wide">AI Systems</dt>
+                <dd class="text-sm text-gray-600">AI agents, agentic workflows, RAG, tool calling, model evaluation</dd>
+              </div>
+              <div class="capability-row">
+                <dt class="text-xs font-mono text-gray-400 uppercase tracking-wide">Backend</dt>
+                <dd class="text-sm text-gray-600">Python, FastAPI, PostgreSQL, pgvector, REST APIs, Ray Serve</dd>
+              </div>
+              <div class="capability-row">
+                <dt class="text-xs font-mono text-gray-400 uppercase tracking-wide">Cloud</dt>
+                <dd class="text-sm text-gray-600">GCP, Docker, Supabase, Render, Linux</dd>
+              </div>
+              <div class="capability-row">
+                <dt class="text-xs font-mono text-gray-400 uppercase tracking-wide">Languages</dt>
+                <dd class="text-sm text-gray-600">Python, TypeScript, JavaScript, C++, CUDA C</dd>
+              </div>
+              <div class="capability-row">
+                <dt class="text-xs font-mono text-gray-400 uppercase tracking-wide">AI Models</dt>
+                <dd class="text-sm text-gray-600">Gemini 2.5 Pro, Gemini Flash, Pydantic AI</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-24 px-6 border-t border-gray-100">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Experience</p>
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-10">Where I've Worked</h2>
+
+        <div class="role-block">
+          <!-- Role header -->
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-3 mb-1">
+                <h3 class="font-semibold text-gray-900">Chinchill.ai</h3>
+                <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">Current</span>
+              </div>
+              <p class="text-sm text-gray-500">Applied AI Engineer</p>
+            </div>
+            <p class="text-xs font-mono text-gray-400 whitespace-nowrap mt-1">Mar 2026 – Present</p>
+          </div>
+
+          <!-- Narrative -->
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">
+            I build the AI that sits between a company's existing tools and the things those tools
+            can now do automatically. Integrations, infrastructure, production reliability.
+          </p>
+
+          <!-- Bullets -->
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Started as an intern, shipped a production Jira integration on day one, and was promoted to full-time engineer one week later.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Connected the platform to Jira, ServiceNow, Freshservice, and Confluence so agents can actually resolve IT tickets, not just summarize them.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Extended the messaging layer to Slack, Teams, Google Chat, and GitHub so employees get help without leaving the tools they're already in.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Built the memory and knowledge layer so agents find the right answer from internal docs instead of guessing, and remember context across conversations.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Designed the approval system so agents never take action without the right person signing off first.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+              <span>Diagnosed and fixed production failures across the serving layer, authentication, and enterprise connectors.</span>
+            </li>
+          </ul>
+
+          <!-- Tech -->
+          <p class="text-xs font-mono text-gray-400 mt-6">
+            Python &nbsp;&middot;&nbsp; FastAPI &nbsp;&middot;&nbsp; Pydantic AI &nbsp;&middot;&nbsp; PostgreSQL &nbsp;&middot;&nbsp; Ray Serve &nbsp;&middot;&nbsp; Gemini &nbsp;&middot;&nbsp; GCP
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6 border-t border-gray-100">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Projects</p>
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-10">What I've Built</h2>
+
+        <div class="space-y-6">
+
+          <!-- ScheduleBud -->
+          <div class="rounded-xl border border-gray-200 bg-white p-6 hover:border-gray-300 hover:shadow-sm transition duration-200">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="text-xs font-mono text-gray-400 mb-1">Mar 2025 – Present</p>
+                <h3 class="text-base font-semibold text-gray-900">ScheduleBud</h3>
+                <p class="text-sm text-gray-500">Founding Software Engineer</p>
+              </div>
+              <a href="https://schedulebud.app" target="_blank" rel="noopener noreferrer"
+                 class="text-xs border border-gray-200 px-3 py-1 rounded-full text-gray-500 hover:text-gray-900 hover:border-gray-400 transition-colors whitespace-nowrap shrink-0">
+                Live App &#8599;
+              </a>
+            </div>
+
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              An AI scheduling platform for students that I built end to end and have kept running since March 2025.
+            </p>
+
+            <ul class="space-y-2.5 text-sm text-gray-600">
+              <li class="flex gap-3">
+                <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+                <span>Students tell it what they need in plain English. It builds a schedule around their actual life, not just the course catalog.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+                <span>Every answer comes from real course data. The AI doesn't get to guess.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+                <span>Each student's data is isolated at the database level, independent of anything happening in the application code.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+                <span>Simple questions route to cheaper models, complex ones to capable ones. Kept costs down without the output suffering.</span>
+              </li>
+            </ul>
+
+            <p class="text-xs font-mono text-gray-400 mt-5">
+              TypeScript &nbsp;&middot;&nbsp; Node.js &nbsp;&middot;&nbsp; Supabase &nbsp;&middot;&nbsp; Gemini &nbsp;&middot;&nbsp; PostgreSQL
+            </p>
+          </div>
+
+          <!-- QKV Attention -->
+          <div class="rounded-xl border border-gray-200 bg-white p-6 hover:border-gray-300 hover:shadow-sm transition duration-200">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="text-xs font-mono text-gray-400 mb-1">Spring 2025</p>
+                <h3 class="text-base font-semibold text-gray-900">GPU Kernel for AI Acceleration</h3>
+                <p class="text-sm text-gray-500">Research Project</p>
+              </div>
+              <a href="https://github.com/tonytrieu-dev" target="_blank" rel="noopener noreferrer"
+                 class="text-xs border border-gray-200 px-3 py-1 rounded-full text-gray-500 hover:text-gray-900 hover:border-gray-400 transition-colors whitespace-nowrap shrink-0">
+                Code &#8599;
+              </a>
+            </div>
+
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              A research project into GPU kernel optimization for the attention operation at the core of every large language model.
+            </p>
+
+            <ul class="space-y-2.5 text-sm text-gray-600">
+              <li class="flex gap-3">
+                <span class="text-gray-300 mt-0.5 shrink-0">&middot;</span>
+                <span>Dug into how memory access, parallelism, and compute bottlenecks interact in GPU kernels. The same tradeoffs that show up in production AI inference at scale.</span>
+              </li>
+            </ul>
+
+            <p class="text-xs font-mono text-gray-400 mt-5">
+              CUDA C &nbsp;&middot;&nbsp; GPU Architecture
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6 border-t border-gray-100">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Contact</p>
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-6">Let's Talk</h2>
+        <p class="text-gray-600 leading-relaxed mb-10">
+          I'm open to full-time Applied AI Engineering roles. If you're building something
+          with AI agents, enterprise integrations, or AI infrastructure, I'd like to hear about it.
+        </p>
+
+        <a href="mailto:tonytrieu.dev@gmail.com?subject=Applied%20AI%20Engineer%20Role%20at%20%5BCompany%5D"
+           class="inline-block bg-black text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
+          tonytrieu.dev@gmail.com
+        </a>
+
+        <div class="flex items-center justify-center gap-6 mt-8">
+          <a href="https://github.com/tonytrieu-dev" target="_blank" rel="noopener noreferrer"
+             class="text-gray-400 hover:text-gray-900 transition-colors text-sm">
+            GitHub
+          </a>
+          <span class="text-gray-200">|</span>
+          <a href="https://www.linkedin.com/in/tonytrieu03/" target="_blank" rel="noopener noreferrer"
+             class="text-gray-400 hover:text-gray-900 transition-colors text-sm">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-8 border-t border-gray-100 text-center text-xs text-gray-400">
+    2026 Tony Trieu
+  </footer>
+
+  <script>
+    function portfolio() {
+      return {
+        mobileMenuOpen: false,
+        activeSection: 'hero',
+
+        init() {
+          const sections = document.querySelectorAll('section[id]');
+          const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+              if (e.isIntersecting) this.activeSection = e.target.id;
+            });
+          }, { threshold: 0.4, rootMargin: '-80px 0px 0px 0px' });
+
+          sections.forEach(s => obs.observe(s));
+
+          document.querySelectorAll('a[href^="#"]').forEach(a =>
+            a.addEventListener('click', () => { this.mobileMenuOpen = false; })
+          );
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
